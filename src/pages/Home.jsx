@@ -19,7 +19,7 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="p-6 lg:p-12">
+            <div className="p-6 lg:p-12 w-1/2">
                 <h1 className="text-2xl lg:text-5xl font-bold mb-4 text-center lg:text-left">Quem somos?</h1>
                 <p className="text-sm md:text-base lg:text-lg text-justify">
                     Nós da <span className='font-bold'>Energify</span> nos esforçamos para encontrar o melhor substituto renovável e limpo para a sua situação.

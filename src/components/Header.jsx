@@ -15,10 +15,10 @@ export default function Header() {
                     <ul className="flex gap-5">
                         <li>
                             <NavLink
-                            to="/produtos"
+                            to="/servicos"
                             className={({ isActive }) => isActive ? "text-white font-bold" : "text-gray-500"}
                                 aria-label="Página Inicial">
-                                Produtos
+                                Serviços
 
                             </NavLink>
                         </li>

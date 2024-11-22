@@ -1,12 +1,24 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function Contato(){
-    const[nome, setNome] = useState('');
-    const[email, setEmail] = useState('');
-    const[mensagem, setMensagem] = useState('');
-    const[erro, setErro] = useState('');
-    const[sucesso, setSucesso] = useState('');
-    
+    const[nome, setNome] = useState(() => localStorage.getItem('nome') || "");
+    const[email, setEmail] = useState(() => localStorage.getItem('email') || "");
+    const[mensagem, setMensagem] = useState(() => localStorage.getItem('mensagem') || "");
+    const[erro, setErro] = useState("");
+    const[sucesso, setSucesso] = useState("");
+
+    useEffect(() => {
+        localStorage.setItem('nome', nome);
+    }, [nome]);
+
+    useEffect(() => {
+        localStorage.setItem('email', email);
+    }, [email]);
+
+    useEffect(() => {
+        localStorage.setItem('msg', mensagem);
+    }, [mensagem]);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!nome || !email || !mensagem) {
@@ -15,7 +27,6 @@ export default function Contato(){
             return;
         }
 
-    
         setErro('');
         setSucesso('Mensagem enviada com sucesso!');
         setNome('');
@@ -25,18 +36,16 @@ export default function Contato(){
 
     const handleNomeChange = (e) =>{
         setNome(e.target.value);
-        console.log("Nome: ", e.target.value);
     };  
     const handleEmailChange = (e) =>{
         setEmail(e.target.value);
-        console.log("Email: ", e.target.value);
-    };  const handleMensagemChange = (e) =>{
+    };  
+    const handleMensagemChange = (e) =>{
         setMensagem(e.target.value);
-        console.log("Mensagem: ", e.target.value);
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center">
+        <div className="flex items-center justify-center min-h-screen">
             <div className="bg-gray-100 p-8 rounded shadow-md w-full max-w-lg">
                 <h1 className="text-3xl font-bold mb-6 text-center">Entre em contato</h1>
 
